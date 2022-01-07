@@ -1,0 +1,325 @@
+
+tech stack:
+---------
+# python 3.10
+# Django latest
+# Mysql 
+
+UI:
+# HTML
+# CSS
+# JAVA SCRIPT
+# Jquery
+# Boostrap
+
+
+
+# Python virtualenv
+
+project name: demoproject
+env : demoproject
+
+
+
+$ pip install virtualenv
+
+
+# create virtualenv
+$ virtualenv demoproject
+
+
+# Activate it
+$ cd demoproject\Scripts\
+
+# run activate
+$ activate
+
+
+
+# install Django module
+
+# lets work on latest
+$ pip install django
+
+# list out packages in env
+$ pip freeze
+
+
+
+# lets create Django project with django admin command
+# Create project
+
+$ django-admin startproject demoDjangoProject
+
+
+# running server
+$ python manage.py runserver
+
+# applying db migration
+$ python manage.py migrate
+
+
+# 127.0.0.1:8000
+
+# to access admin ui
+ 127.0.0.1:8000/admin
+ 
+# create super user to access admin ui
+$ python manage.py createsuperuser
+
+user name: admin
+password: Admin@123
+
+
+# lets create an app in django
+
+1) create app
+2) register app in installed apps list in project setting.py
+
+$ python manage.py startapp demoapp
+
+# register in installed apps
+  INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'demoapp',
+]
+
+
+
+# create models and run db migration commands
+class model(model.Model):
+   pass
+  
+
+ step #1: $ python manage.py makemigrations
+    
+	note: it creates a python migration file and store inside migrations folder
+
+ step #2: $ python manage.py migrate
+    note: django look into migrations folder and apply migrations into db
+	 : python to sql statements
+
+
+CREATE TABLE "demoapp_contact" (
+"id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, 
+"name" varchar(50) NOT NULL, 
+"phone" varchar(13) NOT NULL, 
+"location" varchar(100) NOT NULL, 
+"email" varchar(70) NOT NULL, 
+"pin_code" integer NOT NULL, 
+"birth_date" date NOT NULL)
+
+
+
+
+sqllite UI: https://sqlitebrowser.org/dl/
+
+models:
+-------
+
+(demoproject) G:\Suman_IT_Python_2021\projects\demoDjangoProject>python manage.py makemigrations
+System check identified some issues:
+
+WARNINGS:
+demoapp.Contact.pin_code: (fields.W122) 'max_length' is ignored when used with IntegerField.
+        HINT: Remove 'max_length' from field
+Migrations for 'demoapp':
+  demoapp\migrations\0003_contact.py
+    - Create model Contact
+
+(demoproject) G:\Suman_IT_Python_2021\projects\demoDjangoProject>python manage.py migrate
+System check identified some issues:
+
+WARNINGS:
+demoapp.Contact.pin_code: (fields.W122) 'max_length' is ignored when used with IntegerField.
+        HINT: Remove 'max_length' from field
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, demoapp, sessions
+Running migrations:
+  Applying demoapp.0003_contact... OK
+
+(demoproject) G:\Suman_IT_Python_2021\projects\demoDjangoProject>python manage.py shell
+Python 3.10.1 (tags/v3.10.1:2cd268a, Dec  6 2021, 19:10:37) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from demoapp.models import Contact
+>>> Contact
+<class 'demoapp.models.Contact'>
+>>> # lets create a contact
+>>> ravi = Contact(name='Ravi', phone='+919010326372', location='Hyderabad', email='ravi@gmail.com
+', pin_code=500072)
+>>> ravi
+<Contact: Ravi - +919010326372>
+>>> ravi.save()
+Traceback (most recent call last):
+  File "G:\Suman_IT_Python_2021\projects\demoproject\lib\site-packages\django\db\backends\utils.py
+", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "G:\Suman_IT_Python_2021\projects\demoproject\lib\site-packages\django\db\backends\sqlite3\
+base.py", line 416, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: demoapp_contact.birth_date
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "G:\Suman_IT_Python_2021\projects\demoproject\lib\site-packages\django\db\models\base.py",
+line 743, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "G:\Suman_IT_Python_2021\projects\demoproject\lib\site-packages\django\db\models\base.py",
+line 780, in save_base
+    updated = self._save_table(
+  File "G:\Suman_IT_Python_2021\projects\demoproject\lib\site-packages\django\db\models\base.py",
+line 885, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "G:\Suman_IT_Python_2021\projects\demoproject\lib\site-packages\django\db\models\base.py",
+line 923, in _do_insert
+    return manager._insert(
+  File "G:\Suman_IT_Python_2021\projects\demoproject\lib\site-packages\django\db\models\manager.py
+", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "G:\Suman_IT_Python_2021\projects\demoproject\lib\site-packages\django\db\models\query.py",
+ line 1301, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "G:\Suman_IT_Python_2021\projects\demoproject\lib\site-packages\django\db\models\sql\compil
+er.py", line 1441, in execute_sql
+    cursor.execute(sql, params)
+  File "G:\Suman_IT_Python_2021\projects\demoproject\lib\site-packages\django\db\backends\utils.py
+", line 99, in execute
+    return super().execute(sql, params)
+  File "G:\Suman_IT_Python_2021\projects\demoproject\lib\site-packages\django\db\backends\utils.py
+", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "G:\Suman_IT_Python_2021\projects\demoproject\lib\site-packages\django\db\backends\utils.py
+", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "G:\Suman_IT_Python_2021\projects\demoproject\lib\site-packages\django\db\backends\utils.py
+", line 80, in _execute
+    with self.db.wrap_database_errors:
+  File "G:\Suman_IT_Python_2021\projects\demoproject\lib\site-packages\django\db\utils.py", line 9
+0, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "G:\Suman_IT_Python_2021\projects\demoproject\lib\site-packages\django\db\backends\utils.py
+", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "G:\Suman_IT_Python_2021\projects\demoproject\lib\site-packages\django\db\backends\sqlite3\
+base.py", line 416, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: demoapp_contact.birth_date
+
+>>> ravi = Contact(name='Ravi', phone='+919010326372', location='Hyderabad', email='ravi@gmail.com
+', pin_code=500072, birth_date='2021-03-22')
+>>> ravi.save()
+>>> str(ravi)
+'Ravi - +919010326372'
+>>> ravi.name
+'Ravi'
+>>> # insert into
+>>> ravi
+<Contact: Ravi - +919010326372>
+>>> # update ravi details
+>>> ravi.name = 'ravi kumar'
+>>> ravi.save()
+
+>>> harsha = Contact(name='harsha', phone='+919010326373', location='Bangalore', email='hs@gmail.c
+om', pin_code=500098, birth_date='1991-02-12')
+>>> harsha.save()
+>>> # get the contact by id
+>>> # get all objects (select * from contact)
+>>> contact = Contact.objects.all()
+>>> contact
+<QuerySet [<Contact: ravi kumar - +919010326372>, <Contact: harsha - +919010326373>]>
+>>> # where filter
+>>> contact = Contact.objects.get(pk=1)
+>>> contact
+<Contact: ravi kumar - +919010326372>
+>>> # get name
+>>> contact.name
+'ravi kumar'
+>>> # location
+>>> contact.location
+'Hyderabad'
+>>> # get another record
+>>> contact = Contact.objects.get(pk=2)
+>>> contact
+<Contact: harsha - +919010326373>
+>>> # lets delete harsha
+>>> contact.delete()
+(1, {'demoapp.Contact': 1})
+>>> contact
+<Contact: harsha - +919010326373>
+>>> # create harsha again as another recod 
+>>> contact.save()
+>>> # get raise error if id not found in db
+>>> contact = Contact.objects.get(pk=2)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "G:\Suman_IT_Python_2021\projects\demoproject\lib\site-packages\django\db\models\manager.py
+", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "G:\Suman_IT_Python_2021\projects\demoproject\lib\site-packages\django\db\models\query.py",
+ line 439, in get
+    raise self.model.DoesNotExist(
+demoapp.models.Contact.DoesNotExist: Contact matching query does not exist.
+>>> contact = Contact.objects.get(pk=1)
+>>> contact
+<Contact: ravi kumar - +919010326372>
+>>> # update phone number
+>>> contact.phone='=9133344433'
+>>> contact.save()
+>>> # create
+>>> # update
+>>> # delete
+>>> # reading
+>>> # id
+>>> # add filer columns you like
+>>> Contact.objects.filter(name='ravi kumar')
+<QuerySet [<Contact: ravi kumar - =9133344433>]>
+>>> Contact.objects.filter(name='ravi')
+<QuerySet []>
+>>> Contact.objects.filter(name__contains='ravi')
+<QuerySet [<Contact: ravi kumar - =9133344433>]>
+>>> Contact.objects.filter(name__contains='a')
+<QuerySet [<Contact: ravi kumar - =9133344433>, <Contact: harsha - +919010326373>]>
+>>> Contact.objects.filter(name__contains='ravi')
+<QuerySet [<Contact: ravi kumar - =9133344433>]>
+>>> # get the contact by phone
+>>> Contact.objects.filter(phone='+919010326373')
+<QuerySet [<Contact: harsha - +919010326373>]>
+>>> Contact.objects.filter(phone='+919010326373', name='harsha')
+<QuerySet [<Contact: harsha - +919010326373>]>
+
+
+
+# lets play with orm
+$ python manage.py shell
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
