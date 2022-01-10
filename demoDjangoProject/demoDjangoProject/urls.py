@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from demoapp.views import index
+from demoapp.views import create_contact
+from demoapp.views import contact_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('demoapp', index, name='index')
+    path('demoapp', index, name='index'),
+    path('demoapp/contact/create', create_contact, name='create-contact'),
+    path('demoapp/contact/contactlist', contact_list, name='contact-list')
 ]

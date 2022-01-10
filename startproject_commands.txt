@@ -303,6 +303,41 @@ $ python manage.py shell
 
 
 
+# MVT (MODEL(db) , VIEW(request and response, TEMPLATE(html)
+
+# today we are going  to discuss about views and urls.py
+
+
+# url  --> django view(python class/ function)
+
+/contact/create --->  django create view
+/contact/get --->  get view
+
+
+HTTP request methods
+
+1) GET --> get the resource from server
+
+2) POST  --> posting data from browser to server
+
+3) PUT  -->   to update existing resource
+
+4) DELETE --> to delete resource from server
+
+
+# get method for returning template
+
+# post method to send data from broswer to server
+
+
+
+
+
+
+
+
+
+
 
 
 

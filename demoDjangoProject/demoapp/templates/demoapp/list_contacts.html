@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact List</title>
+</head>
+<body>
+
+
+<table>
+    <tr>
+        <th> Name</th>
+        <th> phone</th>
+        <th> location</th>
+    </tr>
+    {% for contact in contacts|slice:"0:3" %}
+    <tr>
+        <td> {{ contact.name}}</td>
+        <td> {{ contact.phone }}</td>
+        <td> {{ contact.location }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

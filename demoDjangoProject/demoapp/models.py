@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Employee(models.Model):  # table name
     name = models.CharField(max_length=50, null=False)
