@@ -300,9 +300,6 @@ demoapp.models.Contact.DoesNotExist: Contact matching query does not exist.
 # lets play with orm
 $ python manage.py shell
 
-
-
-
 # MVT (MODEL(db) , VIEW(request and response, TEMPLATE(html)
 
 # today we are going  to discuss about views and urls.py
@@ -328,6 +325,143 @@ HTTP request methods
 # get method for returning template
 
 # post method to send data from broswer to server
+
+
+# Templates in django:
+---------------------
+
+In the Django MTV model, the template is the presentation layer.
+This layer interacts with the user, sends the requests to the views,
+and responds to the user.
+
+
+--> A Django template is a text document(html) or a Python string marked-up using
+the Django template language.
+
+--> Some constructs are recognized and interpreted by the template engine.
+
+--> The main ones are variables and tags. A template is rendered with a context
+
+-->  Django templates not only allow passing data from view to template, but also provides some
+limited features of a programming such as variables, for loops, comments, extends etc.
+
+
+
+# Creating template and returning from view functions
+
+
+
+
+# Rendering template with context(data) and returning from view function.
+
+
+
+
+ORM  : Object relational mapper
+
+
+RDBMS :
+
+
+
+
+
+customer table in db:
+table name
+columns: name(varchar), mobile number(varchar), address(varchar)
+
+1
+2
+3
+4
+
+
+
+model:
+from django.db import models
+
+class Customer(models.Model):
+    name = models.CharField()
+    mobile_number = models.CharField()
+    address = models.CharField()
+    pin_code = models.CharField()
+
+
+# we have to sync model to db
+$ python manage.py makemigrations
+
+# lets apply migration to db
+$ python manage.py migrate
+# alter customer add column pin_code varchar(30)
+
+
+# ORM queries is used to deal with data(CRUD)
+
+# insert data into customer table
+# insert into customer()...... sql
+# we write in orm , not in plain sql
+
+# insert
+obj = Customer(name="Sai", mobile_number="9003002020", address="Hyderabad", pin_code="38838")
+# save
+obj.save()   ---> it converts obj object into sql insert statement and execute in db
+
+# read the data from db with model class
+customers = Customer.objects.all()  --> select * from customer
+
+# filter data
+customers = Customer.objects.filter(name='sai')  --> select * from customer where name = 'sai'
+
+# updating the data
+customer = Customer.objects.get(pk=1) --> select * from customer where id=1
+
+customer.address = "new address"
+
+# update this change to db
+customer.save() --> update customer set address = "new address" where id=1
+
+
+# dalete
+customer = Customer.objects.get(pk=1)
+customer.delete()  --> delete from customer where id=1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

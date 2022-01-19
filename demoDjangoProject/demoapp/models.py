@@ -30,6 +30,18 @@ class Contact(models.Model):
         return "{name} - {phone}".format(name=self.name, phone=self.phone)
 
 
+class Customer(models.Model):
+    name = models.CharField(max_length=100, null=False)
+    mobile_number = models.CharField(max_length=13, null=False)
+    address = models.CharField(max_length=200, null=False)
+    pin_code = models.CharField(max_length=10, null=True)
+
+    def __str__(self):
+        return "{name} - {mobile_number}".format(name=self.name,
+                                                 mobile_number=self.mobile_number)
+
+
+
 
 
 
