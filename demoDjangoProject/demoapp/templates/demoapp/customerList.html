@@ -1,0 +1,35 @@
+{% extends 'demoapp/base.html' %}
+
+
+{% block content %}
+<br>
+<b> List customers</b>
+
+{% for customer in customers %}
+<li> {{ customer.name }}  ---> {{customer.mobile_number }}</li>
+
+
+{% endfor %}
+
+
+<table border="1">
+    <tr>
+        <th> Name</th>
+        <th> Mobile Number</th>
+        <th> Address</th>
+        <th> pin code</th>
+    </tr>
+    {% for cust in customers %}
+    <tr>
+        <td> {{ cust.name}}</td>
+        <td> {{ cust.mobile_number }}</td>
+        <td> {{ cust.address }}</td>
+        <td> {{ cust.pin_code }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+
+{% endblock %}

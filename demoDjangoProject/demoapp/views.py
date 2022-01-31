@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Contact
+from .models import Customer
 
 # Create your views here.
 
@@ -48,3 +49,40 @@ def contact_list(request):
         'contacts': contacts_query_set
     }
     return render(request, 'demoapp/list_contacts.html', context=context)
+
+
+
+#  customer views
+def create_customer(request):
+    # get request , need to display html page
+    # post data and save to db
+
+    if request.method == 'GET':
+        return render(request, 'demoapp/createCustomer.html', context={})
+    elif request.method == 'POST':
+        name = request.POST['name']
+        mobile_number = request.POST['phone']
+        email = request.POST['email']
+        address = request.POST['address']
+        pin_code = request.POST['pin_code']
+
+        # lets save into db
+        obj = Customer(name=name, mobile_number=mobile_number,
+                       address=address, pin_code=pin_code)
+
+        obj.save()
+
+        return HttpResponse("Customer saved successfully")
+
+
+def list_customers(request):
+    # get the customer data
+    customers = Customer.objects.all()
+    #
+    return render(request, 'demoapp/customerList.html', context={'customers': customers})
+
+
+
+
+
+

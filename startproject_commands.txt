@@ -431,6 +431,71 @@ customer.delete()  --> delete from customer where id=1
 
 
 
+# Templates:
+
+# template is nothing but an html file contains django template tags and filters
+
+# Template tags
+
+# template syntax:
+ # expression
+  {%    %}
+ # variables to display
+   {{   }}
+
+
+ # for loops
+ {% for i in [1, 2,3] %}
+
+  <b> {{ i }}</b>
+
+ {% endfor %}
+
+
+
+ # if condition
+ {% if a > 10 %}
+     <b> a is greater than 10 </b>
+ {% elif a < 10 %}
+     <b> a is less than 10 </b>
+ {% else %}
+     <b> a is not less than 10 and greater than 10 </b>
+ {% endif %}
+
+# template extending/inheritance
+# template blocks
+
+# UI pages for customer data
+# create customer
+# list customer
+
+# url for creating
+# url for listing
+
+# Inheriting templates
+ {% extends 'templatename' %}
+
+ # block
+ {% block <block_name> %}
+
+
+ {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

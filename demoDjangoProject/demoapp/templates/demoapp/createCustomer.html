@@ -1,24 +1,25 @@
 {% extends 'demoapp/base.html' %}
 
-
 {% block content %}
-<h1> Create Contact</h1>
+
+<br>
+<b> Create customer </b>
+
+
 
 <form method="POST">
     {% csrf_token %}
 <label> name:</label> <input type='text' id="name" name="name" required>
 <br>
-<label> phone:</label> <input type='text' id="phone" name="phone" required>
-<br>
-<label> location:</label> <input type='text' id="location" name="location" required>
+<label> mobile number:</label> <input type='text' id="phone" name="phone" required>
 <br>
 <label> email:</label> <input type='email' id="email" name="email" required>
 <br>
+    <label> address: </label> <input type="text", id="address" name="address">
+    <br>
 <label> pin_code:</label> <input type='text' id="pin_code" name="pin_code" required>
-<br>
-<label> date of birth:</label> <input type='date' id="dob" name="dob" required>
     <button type="submit"> Save </button>
 </form>
 
-{% endblock %}
 
+{% endblock %}
