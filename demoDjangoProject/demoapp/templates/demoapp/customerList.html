@@ -1,12 +1,27 @@
 {% extends 'demoapp/base.html' %}
 
+{% load custom_tags %}
 
 {% block content %}
+<br>
+{% now "D d M Y" %}
+<h2>Current Data and Time: {{ current_date| date:"d-m-Y h:i A" }}</h2>
+
+<b> first_name: {{name | modify_name:'first_name' }}</b>
+<br>
+<b> last_name: {{name | modify_name:'last_name' | modify_name:'title_case'}}</b>
+<br>
+<b> full name: {{name | modify_name:'title_case'}}</b>
+
+<br>
+{{'INDIA' | get_chars:2}}
+<br>
+{{'INDIA' | get_chars:3}}
 <br>
 <b> List customers</b>
 
 {% for customer in customers %}
-<li> {{ customer.name }}  ---> {{customer.mobile_number }}</li>
+<li> {{ customer.name|capfirst}}  ---> {{customer.mobile_number }}</li>
 
 
 {% endfor %}
@@ -21,9 +36,9 @@
     </tr>
     {% for cust in customers %}
     <tr>
-        <td> {{ cust.name}}</td>
+        <td> {{ cust.name | capfirst}}</td>
         <td> {{ cust.mobile_number }}</td>
-        <td> {{ cust.address }}</td>
+        <td> {{ cust.address | upper }}</td>
         <td> {{ cust.pin_code }}</td>
     </tr>
     {% endfor %}

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Contact
 from .models import Customer
+from datetime import datetime
 
 # Create your views here.
 
@@ -79,7 +80,11 @@ def list_customers(request):
     # get the customer data
     customers = Customer.objects.all()
     #
-    return render(request, 'demoapp/customerList.html', context={'customers': customers})
+    return render(request, 'demoapp/customerList.html', context={
+        'customers': customers,
+        'current_date': datetime.now(), # format here and pass to context #
+        'name': "badra alavala"
+    })
 
 
 

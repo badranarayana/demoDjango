@@ -483,6 +483,58 @@ customer.delete()  --> delete from customer where id=1
 
 
 
+# template tags in django:
+
+# having control over how data needs to display in html page
+
+
+
+filter --> python function which takes care about  template data format
+
+# built-in filters
+# upper
+# lower
+# capfirst
+
+
+# define customer filters and tags
+
+step #1:
+
+--> add templatetags package in app directory
+
+# step #2:
+--> add custom_tags.py or any file name.
+
+# step #3:
+  open custom_tags.py file and add filters or tags
+
+from django import template
+register = template.Library()
+
+# all custom tags going to be here
+def modify_name(value, arg):
+ if arg == "first_name":
+     return value.split(" ")[0]
+ if arg == "last_name":
+     return value.split(" ")[-1]
+ if arg == "title_case":
+     return value.title()
+ return value
+
+
+
+register.filter('modify_name', modify_name)
+
+
+# view --> template --> format
+
+
+
+
+
+
+
 
 
 
