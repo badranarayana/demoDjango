@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {% load static %}
     <title>{% block title %}   base title {% endblock %}</title>
+    <link href="{% static 'css/myapp.css' %}" rel="stylesheet">
+    <script src="{% static 'javascript/myapp.js' %}"></script>
 </head>
 <body>
 <b> company new logo</b>

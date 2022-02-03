@@ -531,6 +531,28 @@ register.filter('modify_name', modify_name)
 
 
 
+# static file configuration in django
+
+# CSS, javascript, logs/media/images
+
+
+# create a static directory in root of project
+
+static
+  -> css
+     myapp.css
+  -> js
+     myapp.js
+  -> images
+
+
+# setting.py
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+
+
+# how to refer static tag in html file/template
+{% load static %}
+<link href="{% static 'css/myapp.css' %}" rel="stylesheet">
 
 
 

@@ -20,6 +20,8 @@ from demoapp.views import create_contact
 from demoapp.views import contact_list
 from demoapp.views import create_customer
 from demoapp.views import list_customers
+from demoapp.views import home
+from demoapp.views import contact_us
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +30,6 @@ urlpatterns = [
     path('demoapp/contact/contactlist', contact_list, name='contact-list'),
     path('demoapp/customer/create', create_customer, name='create-customer'),
     path('demoapp/customer/list', list_customers, name='list-customer'),
+    path('home', home, name='home'),
+    path('contactus', contact_us, name='contact-us'),
 ]

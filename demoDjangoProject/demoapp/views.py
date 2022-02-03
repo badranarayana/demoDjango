@@ -87,7 +87,10 @@ def list_customers(request):
     })
 
 
+def home(request):
+    return render(request, 'demoapp/index.html')
 
 
-
+def contact_us(request):
+    return HttpResponse("We will get back to you. soon!")
 
